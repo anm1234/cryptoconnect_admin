@@ -1,33 +1,32 @@
 import React from "react";
+import Input from "./inpt";
+import "./style.css";
 
-function Createinput(props){
+var is_loggedin = false;
+
+function LoginCheck() {
+  if (is_loggedin) {
+    return <h1>Hello Sir</h1>;
+  } else {
     return (
-            <div>
-                <input 
-                    className={props.className} 
-                    type={props.type}
-                    placeholder={props.placeholder}
-                    required
-                />
-            </div>      
+      <form>
+        <h1>Crytoconnect</h1>
+        <p>Admin Portal</p>
+        <hr/>
+        <Input className="email" type="email" placeholder="Enter your email" /><br/>
+        <Input className="password" type="password" placeholder="Enter your password" /><br/>
+        <button className="submit" type="submit">Access Portal</button>
+      </form>
     );
+  }
 }
 
-function Form(){
-    return(
-        <div id="login">
-            <form method="POST" action="/login">
-                <h2>Admin Portal</h2>
-                <hr/>
-                <Createinput className="email" type="email" placeholder="Enter your Email"/>
-                <Createinput className="password" type="password" placeholder="Enter your password"/>
-                <Createinput className="submit" type="submit" placeholder="Enter your password"/>
-            </form>
-        </div>
-
-    );
+function Form() {
+  return (
+    <div id="login">
+      <LoginCheck />
+    </div>
+  );
 }
 
 export default Form;
-
-

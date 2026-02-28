@@ -1,9 +1,12 @@
 import React from "react";
+import "./style.css";
 
-function input(){
+function Input(props){
     return(
-        <input className="user_email" type="email" required placeholder="Please Enter Admin Email"/>
+        <input className={props.className} type={props.type} required placeholder={props.placeholder}/>
     )
 }
 
-export default input;
+export default Input;
+
+
