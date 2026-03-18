@@ -1,10 +1,12 @@
 import express from "express";
 import session from "express-session"
+import cors from "cors"
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cors());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -17,14 +19,15 @@ app.use(session({
   }
 }));
 
+app.get("/",(()=>{
+  console.log("User landed on get");
+}))
 
-app.get("/", (req, res) => {
-});
 
-app.post("login",(req,res)=>{
+app.post("/login",(req,res)=>{
   console.log("User is on the login page");
   console.log(req.body);
-  res.json({"check":true})
+  res.json({ "exist" : false, "checksout":false})
 })
 
 app.listen(3000,()=>{
