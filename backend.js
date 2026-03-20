@@ -23,11 +23,16 @@ app.get("/",(()=>{
   console.log("User landed on get");
 }))
 
-
-app.post("/login",(req,res)=>{
+app.post("/login", (req, res) => {
   console.log("User is on the login page");
   console.log(req.body);
-  res.json({ "exist" : false, "checksout":false})
+  res.json({ authenticated: true, message: "Login successful" })
+})
+
+app.post("/signup", (req, res) => {
+  console.log("User is on the signup page");
+  console.log(req.body);
+  res.json({ authenticated: true, message: "Registration successful" })
 })
 
 app.listen(3000,()=>{
