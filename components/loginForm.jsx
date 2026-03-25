@@ -3,7 +3,9 @@ import Input from "./inpt";
 import {Eye, EyeOff} from "lucide-react"
 import details from "./location";
 
-function LoginForm(){
+
+
+function LoginForm(props){
 
     const [view_password, setView] = useState("password");
     const [pagetype, setpagetype] = useState("login");
@@ -28,6 +30,7 @@ function LoginForm(){
             const data = await response.json();
             if (!response.ok) throw new Error(data.message || "Registration failed.")
             console.log(data.message)
+            props.setProceed(true);
         } catch(err) {
             setError(err.message)
         }
@@ -46,6 +49,7 @@ function LoginForm(){
             const data = await response.json();
             if (!response.ok) throw new Error(data.message || "Login failed.")
             console.log(data.message)
+            props.setProceed(true); //
         } catch(err) {
             setError(err.message)
         }
